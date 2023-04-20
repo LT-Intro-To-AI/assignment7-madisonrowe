@@ -10,17 +10,17 @@ sq_training_data = [
     ([0.1], [0.01]),
     ([.9], [.81])
 ]
-sqn = NeuralNet(1, 20, 1)
-sqn.train(sq_training_data)
+#sqn = NeuralNet(1, 20, 1)
+#sqn.train(sq_training_data)
 
-print()
-print(sqn.test_with_expected(sq_training_data))
-print(sqn.evaluate([0.66]))
-print(sqn.evaluate([0.95]))
+#print()
+#print(sqn.test_with_expected(sq_training_data))
+#print(sqn.evaluate([0.66]))
+#print(sqn.evaluate([0.95]))
 
-print()
-print("\n\nTraining xor\n\n")
-print()
+#print()
+#print("\n\nTraining xor\n\n")
+#print()
 
 x_or_trainingdata = [
     ([0, 0], [0]),
@@ -29,15 +29,15 @@ x_or_trainingdata = [
     ([1, 1], [0])
 ]
 
-xorn = NeuralNet(2, 20, 1)
+xorn = NeuralNet(2, 2, 1)
 
 xorn.train(x_or_trainingdata)
 
-print()
+#print()
 
 print(xorn.test_with_expected(x_or_trainingdata))
 
-print("\n\nTraining voter opinion\n\n")
+#print("\n\nTraining voter opinion\n\n")
 
 voter_opinion_data = [
     ([.9, .6, .8, .3, .1], [1]),
@@ -48,15 +48,22 @@ voter_opinion_data = [
     ([.6, .3, .4, .3, .6], [0])
 ]
 
-von = NeuralNet(5, 6, 1)
+von = NeuralNet(5, 10, 1)
 
 von.train(voter_opinion_data)
 
 print(von.test_with_expected(voter_opinion_data))
 
 test_data = [
-    [1, 1, 1, .1, .1],
-    [.5, .2, .1, .7, .7]
+    ([1, 1, 1, .1, .1]),
+    ([.5, .2, .1, .7, .7]),
+    ([.8, .3, .3, .3, .8]),
+    ([.8, .3, .3, .8, .3]),
+    ([.9, .8, .8, .3, .6])
 ]
 
-print(f"case 1: {test_data[0]} evaluates to: {von.evaluate(test_data[0])}")
+print(von.evaluate(test_data[0]))
+print(von.evaluate(test_data[1]))
+print(von.evaluate(test_data[2]))
+print(von.evaluate(test_data[3]))
+print(von.evaluate(test_data[4]))
